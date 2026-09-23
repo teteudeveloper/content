@@ -11,7 +11,7 @@ the submodule reference.
 | --- | --- |
 | `cheatsheets/` | Concise references organized by technical topic |
 | `codex/` | Structured entries for technologies and concepts |
-| `roadmaps/` | Progressive learning paths with outcomes and checkpoints |
+| `roadmaps/` | Prerequisite-ordered curricula with compact lessons |
 
 There is intentionally no `tools/` collection in this repository. DevHub
 Tools are executable product capabilities and will be implemented directly in
@@ -22,32 +22,26 @@ The consuming application loads these collections as Astro content. The
 corresponding schemas and rendering integration live in the application's
 `apps/client/src/content.config.ts` and client features.
 
-## File format
+## Content standards
 
-Content files are Markdown with YAML frontmatter. All collections use these
-common fields:
+Every new or updated entry must comply with the authoring standard for its
+collection. A contribution is incomplete until its standard's acceptance
+checklist passes.
 
-```yaml
-title: "Entry title"
-description: "Short description"
-category: topic
-tags: [tag-one, tag-two]
-order: 10
-status: published
-```
-
-Roadmaps additionally require `level`, `goal`, `prerequisites`, `outcomes`,
-and `stages`. Codex entries require `topic`, `base`, `links`, `visualGuide`,
-and `metadata`. The exact schemas are authoritative in the application's
-`content.config.ts`.
+| Collection | Required standard | Covers |
+| --- | --- | --- |
+| Roadmaps | [ROADMAP.md](./ROADMAP.md) | Research, curriculum design, manifests, lessons, localization, and validation |
+| Cheatsheets | [CHEATSHEET.md](./CHEATSHEET.md) | Frontmatter, task-oriented organization, examples, localization, and validation |
+| Codex | [CODEX.md](./CODEX.md) | Verified metadata, branding, canonical links, localization, and validation |
 
 ## Writing content
 
-- Write in English, which is the repository standard.
+- Provide English, neutral Spanish, and Brazilian Portuguese versions.
 - Keep one subject or learning path per file.
 - Prefer precise explanations, practical examples, and links to authoritative
   sources.
-- Keep frontmatter valid and consistent with the collection schema.
+- Keep JSON, YAML frontmatter, paths, and localized variants consistent with the
+  applicable authoring standard.
 - Do not add credentials, private data, or unverifiable claims.
 - Update an existing entry instead of creating a duplicate.
 
@@ -93,4 +87,5 @@ pnpm check
 pnpm build
 ```
 
-Astro validates frontmatter and collection schemas during these checks.
+These checks validate content metadata, collection schemas, and rendering
+integration.
